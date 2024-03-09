@@ -22,6 +22,19 @@ body {
     overflow: hidden;
 }
 
+.header-image > p {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 10px;
+    color: white;
+    font-size: clamp(0.6rem, 2vw, 1rem)
+}
+
+.header-image a {
+    color: white;
+}
+
 .odin-container {
     position: absolute;
     display: flex;
@@ -36,6 +49,7 @@ body {
     font-size: clamp(1.5rem, 8vw, 4rem);
     height: 50%;
     padding: 10px;
+    user-select: none;
 }
 
 .odin-container img {
@@ -104,6 +118,7 @@ input {
     border-style: solid;
     width: 200px;
     height: 30px;
+    padding: 3px;
 }
 
 input.invalid {
@@ -113,11 +128,18 @@ input.invalid {
 button[type="submit"] {
     width: 200px;
     height: 35px;
+    background-color: green;
+    cursor: pointer;
 }
 
-.errorMessage {
+.error-message {
     color: red;
     font-size: 0.8em;
+}
+
+#log-in {
+    color: green;
+    text-decoration: none;
 }
 
 @media only screen and (min-width: 770px) {
@@ -145,7 +167,7 @@ button[type="submit"] {
     }
     .odin-container {
         top: 20%;
-        font-size: 4rem;
-        height: 20%;
+        font-size: 3rem;
+        height: 15%;
     }
 }

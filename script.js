@@ -47,7 +47,7 @@ function matchPasswords() {
     const confirmPassword = document.getElementById("confirm-password"); 
 
     // Select the span element below input
-    let errorMsgElement = document.querySelector(`#password ~ span[class="errorMessage"]`)
+    let errorMsgElement = document.querySelector(`#password ~ span[class="error-message"]`)
 
     // Regex check password
     if (!(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/.test(password.value))) {
@@ -68,7 +68,12 @@ function matchPasswords() {
 }
 
 function showErrorMessage(input, show=true) {
-    let errorMsgElement = document.querySelector(`#${input.id} ~ span[class="errorMessage"]`)
+    // Do not show confirm password message if password is invalid
+    const password = document.getElementById("password");
+    if (input.id === "confirm-password" && !(password.value) && !(password.validity.valid)) {
+        return;
+    }
+    let errorMsgElement = document.querySelector(`#${input.id} ~ span[class="error-message"]`)
     if (!show) {
         errorMsgElement.textContent = "";
         input.classList.remove("invalid");
