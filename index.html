@@ -12,20 +12,23 @@
     </div>
     <main>
         <div class="form-container">
-            <p><strong>This is not a real online service! You know you need something like this
-            in your life to help you realize your deepest dreams. Sign up <em>now</em> to get started.</p><br>
-            <p>You <em>know</em> you want to.</strong></p>
-            <h2>Let's do this!</h2>
-            <form id="sign-up-form" action="" method="post">
+            <header>
+                <p><strong>This is not a real online service! You know you need something like this
+                in your life to help you realize your deepest dreams. Sign up <em>now</em> to get started.</p><br>
+                <p>You <em>know</em> you want to.</strong></p>
+            </header>
+            <h2>Let's do this!</h2> 
+            <form id="sign-up-form" action="" method="post" novalidate>
                 <div class="form-row">
                     <div class="form-column">
                         <label for="first-name">First name</label>
                         <input type="text" id="first-name" name="user-first-name" required>
-                        <span></span>
+                        <span class="errorMessage"></span>
                     </div>
                     <div class="form-column">
                         <label for="last-name">Last name</label>
                         <input type="text" id="last-name" name="user-last-name" required>
+                        <span class="errorMessage"></span>
                     </div>
                 </div>
 
@@ -33,10 +36,12 @@
                     <div class="form-column">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="user-email" required>
+                        <span class="errorMessage"></span>
                     </div>
                     <div class="form-column">
                         <label for="phone-number">Phone number</label>
-                        <input type="tel" id="phone-number" name="user-number" required>
+                        <input type="tel" id="phone-number" name="user-number " required>
+                        <span class="errorMessage"></span>
                     </div>
                 </div>
 
@@ -44,10 +49,12 @@
                     <div class="form-column">
                         <label for="password">Password</label>
                         <input type="password" id="password" required>
+                        <span class="errorMessage"></span>
                     </div>
                     <div class="form-column">
                         <label for="confirm-password">Confirm password</label>
                         <input type="password" id="confirm-password" required>
+                        <span class="errorMessage"></span>
                     </div>
                 </div>
             </form>
@@ -57,5 +64,6 @@
             <p>Already have an account? <a href="">Log in</a></p>
         </div>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
