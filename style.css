@@ -9,28 +9,25 @@
 body {
     display: flex;
     flex-direction: column;
+    height: 100vh;
+}
+
+.header-image {
+    display: flex;
+    background-color: antiquewhite;
+    height: max(8rem, 35vw);
+    overflow: hidden;
+}
+
+.header-image img {
+    width: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
 main {
     display: flex;
     flex-direction: column;
-}
-
-.header-image {
-    display: flex;
-    justify-content: center;
-    height: min(10rem, 50vw);
-    overflow: hidden;
-}
-
-.header-image img {
-    align-self: center;
-    width: 100%;
-}
-
-header {
-    margin: 0;
-    padding: 0;
 }
 
 .form-container,
@@ -54,13 +51,18 @@ header {
     margin-right: 0;
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 770px) {
     body {
         flex-direction: row;
     }
-    .header-image,
+    .header-image {
+        height: auto;
+        width: 35vw;
+        min-width: 25rem;
+        max-width: fit-content;
+    }
     .header-image img {
-        height: 100vh;
-        width: auto;
+        height: 100%;
+        min-width: 100%;
     }
 }
