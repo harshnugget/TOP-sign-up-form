@@ -38,6 +38,7 @@ function showValidationMessage(e) {
     if (form.checkValidity() === false || matchPasswords() === false) {
         // Prevent form from being submitted if validation checks fail
         matchPasswords()
+        document.querySelector(".invalid").focus();
         e.preventDefault();
     }
 }
@@ -51,7 +52,6 @@ function matchPasswords() {
 
     // Regex check password
     if (!(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/.test(password.value))) {
-        console.log("here");
         showErrorMessage(password, true);
         return;
     }
@@ -70,9 +70,10 @@ function matchPasswords() {
 function showErrorMessage(input, show=true) {
     // Do not show confirm password message if password is invalid
     const password = document.getElementById("password");
-    if (input.id === "confirm-password" && !(password.value) && !(password.validity.valid)) {
+    if (input.id === "confirm-password" && (password.classList.contains("invalid") || !(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/.test(password.value)))) {
         return;
     }
+    
     let errorMsgElement = document.querySelector(`#${input.id} ~ span[class="error-message"]`)
     if (!show) {
         errorMsgElement.textContent = "";

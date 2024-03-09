@@ -16,54 +16,50 @@
         <p>Photo by <a href="">Halle West</a> on <a href="">Unsplash</a></p>
     </div>
     <main>
-        <div class="form-container">
-            <header>
-                <p><strong>This is not a real online service! You know you need something like this
-                in your life to help you realize your deepest dreams. Sign up <em>now</em> to get started.</p><br>
-                <p>You <em>know</em> you want to.</strong></p>
-            </header>
-            <h2>Let's do this!</h2> 
-            <form id="sign-up-form" action="" method="post" novalidate>
-                <div class="form-row">
-                    <div class="form-column">
-                        <label for="first-name">First name</label>
-                        <input type="text" id="first-name" name="user-first-name" autocomplete="off" required>
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-column">
-                        <label for="last-name">Last name</label>
-                        <input type="text" id="last-name" name="user-last-name" autocomplete="off" required>
-                        <span class="error-message"></span>
-                    </div>
+        <header>
+            <p><strong>This is not a real online service! You know you need something like this
+            in your life to help you realize your deepest dreams. Sign up <em>now</em> to get started.</p><br>
+            <p>You <em>know</em> you want to.</strong></p>
+        </header>
+        <form id="sign-up-form" action="" method="post" novalidate>
+            <h1><strong>Let's do this!</strong></h1> 
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="first-name">FIRST NAME</label>
+                    <input type="text" id="first-name" name="user-first-name" autocomplete="off" required>
+                    <span class="error-message"></span>
                 </div>
-
-                <div class="form-row">
-                    <div class="form-column">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="user-email" autocomplete="off" required>
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-column">
-                        <label for="phone-number">Phone number</label>
-                        <input type="tel" id="phone-number" name="user-number" autocomplete="off" required>
-                        <span class="error-message"></span>
-                    </div>
+                <div class="form-column">
+                    <label for="last-name">LAST NAME</label>
+                    <input type="text" id="last-name" name="user-last-name" autocomplete="off" required>
+                    <span class="error-message"></span>
                 </div>
-
-                <div class="form-row">
-                    <div class="form-column">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" required>
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-column">
-                        <label for="confirm-password">Confirm password</label>
-                        <input type="password" id="confirm-password" required>
-                        <span class="error-message"></span>
-                    </div>
+            </div>
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="email">EMAIL</label>
+                    <input type="email" id="email" name="user-email" autocomplete="off" required>
+                    <span class="error-message"></span>
                 </div>
-            </form>
-        </div>
+                <div class="form-column">
+                    <label for="phone-number">PHONE NUMBER</label>
+                    <input type="tel" id="phone-number" name="user-number" autocomplete="off" required>
+                    <span class="error-message"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="password">PASSWORD</label>
+                    <input type="password" id="password" required>
+                    <span class="error-message"></span>
+                </div>
+                <div class="form-column">
+                    <label for="confirm-password">CONFIRM PASSWORD</label>
+                    <input type="password" id="confirm-password" required>
+                    <span class="error-message"></span>
+                </div>
+            </div>
+        </form>
         <div class="account-button-container">
             <button form="sign-up-form" type="submit">Create Account</button>
             <p>Already have an account? <a href="" id="log-in"><strong>Log in</strong></a></p>
