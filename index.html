@@ -7,6 +7,54 @@
     <title>Sign-up Form</title>
 </head>
 <body>
-    <h1>Title</h1>
+    <div class="header-image">
+        <img src="images/background_image.jpg" alt="green leaf plant in close up photography">
+    </div>
+    <main>
+        <div class="form-container">
+            <p><strong>This is not a real online service! You know you need something like this
+            in your life to help you realize your deepest dreams. Sign up <em>now</em> to get started.</p><br>
+            <p>You <em>know</em> you want to.</strong></p>
+            <h2>Let's do this!</h2>
+            <form id="sign-up-form" action="" method="post">
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="first-name">First name</label>
+                        <input type="text" id="first-name" name="user-first-name">
+                    </div>
+                    <div class="form-column">
+                        <label for="last-name">Last name</label>
+                        <input type="text" id="last-name" name="user-last-name">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="user-email">
+                    </div>
+                    <div class="form-column">
+                        <label for="phone-number">Phone number</label>
+                        <input type="tel" id="phone-number" name="user-number">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="password">Password</label>
+                        <input type="password" id="password">
+                    </div>
+                    <div class="form-column">
+                        <label for="confirm-password">Confirm password</label>
+                        <input type="password" id="confirm-password">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="account-button-container">
+            <button form="sign-up-form" type="submit">Create Account</button>
+            <p>Already have an account? <a href="">Log in</a></p>
+        </div>
+    </main>
 </body>
 </html>
