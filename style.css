@@ -13,13 +13,36 @@ body {
 }
 
 .header-image {
+    position: relative;
     display: flex;
+    flex-direction: column;
     background-color: antiquewhite;
     height: max(8rem, 35vw);
+    min-height: 8rem;
     overflow: hidden;
 }
 
-.header-image img {
+.odin-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.500);
+    top: calc(20% + 1vw);
+    text-align: center;
+    font-family: "Norse", sans-serif;
+    color: white;
+    font-size: clamp(1.5rem, 8vw, 4rem);
+    height: 50%;
+    padding: 10px;
+}
+
+.odin-container img {
+    height: 100%;
+}
+
+.header-image > img {
     width: 100%;
     object-fit: cover;
     flex-shrink: 0;
@@ -38,14 +61,14 @@ main {
 }
 
 .form-container {
-    margin: 20px 0;
     border-bottom-style: solid;
+    padding-bottom: 15px;
 }
 
 .account-button-container {
     display: flex;
     flex-direction: column;
-    margin: 20px 0;
+    margin: 35px 0;
     gap: 20px;
 }
 
@@ -107,7 +130,7 @@ button[type="submit"] {
         min-width: 25rem;
         max-width: fit-content;
     }
-    .header-image img {
+    .header-image > img {
         height: 100%;
         min-width: 100%;
     }
@@ -119,5 +142,10 @@ button[type="submit"] {
     }
     .form-container > header {
         width: min(40rem, 40vw);
+    }
+    .odin-container {
+        top: 20%;
+        font-size: 4rem;
+        height: 20%;
     }
 }
