@@ -1,63 +1,81 @@
 const inputs = document.querySelectorAll('input[required]');
 const form = document.querySelector("#sign-up-form");
 
-const validationMessages = {
-    "first-name": "*Please enter your first name",
-    "last-name": "*Please enter your last name",
-    "email": "*Please provide a valid email address",
-    "phone-number": "*Please provide a valid phone number",
-    "password": "*Your password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters",
-    "confirm-password": "*Please confirm your password"
-};
-
 // Check validity of each input on form submit
-form.addEventListener("submit", showValidationMessage);
+form.addEventListener("submit", (submit) => {
+    let inputsAreValid = true;
 
-// Check validity of each input when not in focus
-inputs.forEach(e => e.addEventListener("input", (e) => {
-    e.target.addEventListener("blur", (e) => {
-        const input = e.target;
-        if (input.validity.valid) {
-            showErrorMessage(input, false);
-        } else {
-            showErrorMessage(input, true);
-        }
-    }, { once: true });
-}));
-
-function showValidationMessage(e) {
-    inputs.forEach(input => {
-        if (!(input.validity.valid)) {
-            // Display error message below input
-            showErrorMessage(input, true);
-        } else {
-            showErrorMessage(input, false);
+    // Set inputsAreValid to false if any are invalid
+    inputs.forEach((input) => {
+        if (!checkInputValidity(input)) {
+            inputsAreValid = false;
         }
     });
 
-    if (form.checkValidity() === false || matchPasswords() === false) {
-        // Prevent form from being submitted if validation checks fail
-        matchPasswords()
-        document.querySelector(".invalid").focus();
-        e.preventDefault();
+    // If one or more inputs are invalid, or passwords do not match
+    if (!inputsAreValid || !matchPasswords()) {
+        // Prevent form from submitting
+        submit.preventDefault();
+        
+        // Create array of invalid inputs
+        const invalidInputs = Array.from(document.querySelectorAll(".invalid"));
+
+        // Focus on confirm password input if passwords do not match & password is validated
+        if (invalidInputs.every((e) => {
+                return ["password", "confirm-password"].includes(e.id);
+            }) && document.getElementById("password").validity.valid
+        ) {
+            document.getElementById("confirm-password").focus();
+        } else {
+            // Otherwise, focus on the first invalid input
+            invalidInputs[0].focus();
+        }
+    }
+});
+
+// Check for input events on each input
+// Activate input listener only once
+inputs.forEach((input) => {
+    input.addEventListener("input", handleBlur, { once: true });
+});
+
+// Reactivate input listener on the active input element on blur event
+// Validate input on blur event
+// Activate blur listener once to avoid duplicates
+function handleBlur(event) {
+    const activeInput = event.target;
+
+    function handleBlurEvent() {
+        activeInput.addEventListener("input", handleBlur, { once: true });
+        checkInputValidity(activeInput);
+    }
+
+    activeInput.addEventListener("blur", handleBlurEvent, { once: true });
+}
+
+function checkInputValidity(activeInput) {
+    // Check if input is valid
+    if (activeInput.validity.valid) {
+        // Remove error message from below input
+        showValidationMessage(activeInput, false);
+        return true;
+    } else {
+        // Display error message below input
+        showValidationMessage(activeInput, true);
+        return false;
     }
 }
 
+// Check if password and confirm password values match
 function matchPasswords() {
     const password = document.getElementById("password");
     const confirmPassword = document.getElementById("confirm-password"); 
 
     // Select the span element below input
-    let errorMsgElement = document.querySelector(`#password ~ span[class="error-message"]`)
-
-    // Regex check password
-    if (!(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/.test(password.value))) {
-        showErrorMessage(password, true);
-        return;
-    }
+    let validationMessageElement = document.querySelector(`#password ~ .validation-message`)
 
     if (password.value !== confirmPassword.value) {
-        errorMsgElement.textContent = "*Passwords do not match";
+        validationMessageElement.textContent = "*Passwords do not match";
         // Add invalid class to both inputs to override valid styles
         password.classList.add("invalid");
         confirmPassword.classList.add("invalid");
@@ -67,19 +85,35 @@ function matchPasswords() {
     }
 }
 
-function showErrorMessage(input, show=true) {
+function showValidationMessage(input, show=true) {
+    // Validation messages to show beneath each input
+    const validationMessages = {
+        "first-name": "*Please enter your first name",
+        "last-name": "*Please enter your last name",
+        "email": "*Please provide a valid email address",
+        "phone-number": "*Please provide a valid phone number",
+        "password": "*Your password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters",
+        "confirm-password": "*Please confirm your password"
+    };
+
     // Do not show confirm password message if password is invalid
     const password = document.getElementById("password");
-    if (input.id === "confirm-password" && (password.classList.contains("invalid") || !(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/.test(password.value)))) {
+    if (input.id === "confirm-password" && checkInputValidity(password) === false) {
+        if (input.validity.valid === false) {
+            input.classList.add("invalid");
+        }
         return;
     }
     
-    let errorMsgElement = document.querySelector(`#${input.id} ~ span[class="error-message"]`)
+    // Select the span element below each input
+    const validationMessageElement = document.querySelector(`#${input.id} ~ .validation-message`)
     if (!show) {
-        errorMsgElement.textContent = "";
+        // Hide the validation message
+        validationMessageElement.textContent = "";
         input.classList.remove("invalid");
     } else {
-        errorMsgElement.textContent = validationMessages[input.id] || "*Invalid!";
+        // Show the validation message
+        validationMessageElement.textContent = validationMessages[input.id] || "*Invalid!";
         input.classList.add("invalid");
     }
 }

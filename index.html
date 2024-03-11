@@ -7,62 +7,64 @@
     <title>Sign-up Form</title>
 </head>
 <body>
-    <div class="header-image">
-        <div class="odin-container">
-            <img src="images/odin_logo.png" alt="odin logo">
-            <h1>ODIN</h1>
-        </div>
+    <header>
+        <a class="odin-container" href="https://www.theodinproject.com">
+            <img id="odin-container-image" src="images/odin_logo.png" alt="odin logo">
+            <p id="odin-container-text">ODIN</p>
+        </a>
         <img src="images/background_image.jpg" alt="green leaf plant in close up photography">
-        <p>Photo by <a href="">Halle West</a> on <a href="">Unsplash</a></p>
-    </div>
+        <p id="photo-credit">Photo by <a href="https://unsplash.com/@haliewestphoto">Halle West</a> on <a href="https://unsplash.com">Unsplash</a></p>
+    </header>
     <main>
-        <header>
-            <p><strong>This is not a real online service! You know you need something like this
-            in your life to help you realize your deepest dreams. Sign up <em>now</em> to get started.</p><br>
-            <p>You <em>know</em> you want to.</strong></p>
-        </header>
+        <section>
+            <article>
+                <p><strong>This is not a real online service! You know you need something like this
+                in your life to help you realize your deepest dreams. <span>Sign up <em>now</em> to get started.<span></p><br>
+                <p>You <em>know</em> you want to.</strong></p>
+            </article>
+        </section>
         <form id="sign-up-form" action="" method="post" novalidate>
             <h1><strong>Let's do this!</strong></h1> 
             <div class="form-row">
                 <div class="form-column">
                     <label for="first-name">FIRST NAME</label>
                     <input type="text" id="first-name" name="user-first-name" autocomplete="off" required>
-                    <span class="error-message"></span>
+                    <span class="validation-message"></span>
                 </div>
                 <div class="form-column">
                     <label for="last-name">LAST NAME</label>
                     <input type="text" id="last-name" name="user-last-name" autocomplete="off" required>
-                    <span class="error-message"></span>
+                    <span class="validation-message"></span>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-column">
                     <label for="email">EMAIL</label>
                     <input type="email" id="email" name="user-email" autocomplete="off" required>
-                    <span class="error-message"></span>
+                    <span class="validation-message"></span>
                 </div>
                 <div class="form-column">
                     <label for="phone-number">PHONE NUMBER</label>
                     <input type="tel" id="phone-number" name="user-number" autocomplete="off" required>
-                    <span class="error-message"></span>
+                    <span class="validation-message"></span>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-column">
                     <label for="password">PASSWORD</label>
-                    <input type="password" id="password" required>
-                    <span class="error-message"></span>
+                    <input type="password" id="password" minlength="8" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$" required>
+                    <span class="validation-message"></span>
                 </div>
                 <div class="form-column">
                     <label for="confirm-password">CONFIRM PASSWORD</label>
                     <input type="password" id="confirm-password" required>
-                    <span class="error-message"></span>
+                    <span class="validation-message"></span>
                 </div>
             </div>
         </form>
         <div class="account-button-container">
             <button form="sign-up-form" type="submit">Create Account</button>
-            <p>Already have an account? <a href="" id="log-in"><strong>Log in</strong></a></p>
+            <p>Already have an account? <a href="" id="log-in"><strong>Log in</strong></a><span></p>
         </div>
     </main>
     <script src="script.js"></script>

@@ -9,26 +9,26 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 0.8em;
+    background-color: rgb(250, 255, 250);
+    height: 100vh;
 }
 
-.header-image {
+header * {
+    color: white;
+}
+
+header {
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: antiquewhite;
-    height: max(8rem, 50vw);
+    background-color: rgb(201, 201, 201);
+    height: max(8rem, 30vw);
     min-height: 8rem;
     overflow: hidden;
 }
 
-.header-image * {
-    color: white;
-}
-
-.header-image > p {
+p[id="photo-credit"] {
     position: absolute;
     width: 100%;
     text-align: center;
@@ -41,26 +41,30 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.500);
-    top: calc(20% + 1vw);
-    text-align: center;
     font-family: "Norse", sans-serif;
+    text-align: center;
+    text-decoration: none;
     color: white;
-    font-size: clamp(1.5rem, 8vw, 4rem);
-    height: 50%;
+    width: 100%;
+    height: max(4rem, 10vw);
+    background-color: rgba(0, 0, 0, 0.500);
     padding: 10px;
+    top: 20%;
     user-select: none;
 }
 
-.odin-container img {
+#odin-container-text {
+    font-size: max(3.5rem, 9.5vw);
+    font-weight: bold;
+}
+
+#odin-container-image {
     height: 100%;
 }
 
-.header-image > img {
+header > img {
     width: 100%;
     object-fit: cover;
-    flex-shrink: 0;
 }
 
 main {
@@ -70,28 +74,32 @@ main {
     height: 100%;
 }
 
-header,
+section,
 #sign-up-form,
 .account-button-container {
     width: 100%;
     padding: 0 max(4vw, 2rem);
-    flex: 1;
 }
 
-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+section {
+    width: min(100%, 50rem);
     padding-top: 20px;
     flex: 0;
 }
 
+article > p,
+#sign-up-form > h1 {
+    font-size: clamp(0.8rem, 2.5vw, 1.3em);
+}
+
+article > p span {
+    display: inline-block;  /* Ensures "Sign up now to get started" wraps together */
+}
+
 #sign-up-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.350);
     margin: 20px 0 20px 0;
+    background-color: white;
 }
 
 #sign-up-form > h1 {
@@ -99,29 +107,21 @@ header {
     margin-bottom: 20px;
 }
 
-.account-button-container {
-    display: flex;
-    flex-direction: column;
-    padding-top: 15px;
-    gap: 20px;
-    font-size: 1.1em;
-}
-
 .form-row {
     display: flex;
     flex-wrap: wrap;
 }
 
-.form-row:last-of-type {
-    min-height: 78px;
-}
-
 .form-column {
     display: flex;
     flex-direction: column;
-    margin-right: min(10%, 6rem);
     width: min-content;
     min-height: 70px;
+    margin-right: min(10%, 6rem);   /* Horizontal pacing between each input */
+}
+
+.form-column:last-of-type {
+    margin-right: 0;
 }
 
 .form-column > label {
@@ -129,10 +129,6 @@ header {
     font-size: 0.75rem;
     letter-spacing: 1px;
     color: rgb(87, 87, 87);
-}
-
-.form-column:last-of-type {
-    margin-right: 0;
 }
 
 input {
@@ -146,11 +142,33 @@ input {
 }
 
 input:focus {
-    outline-color: blue;
+    outline-color: rgb(63, 92, 255);
 }
 
 input.invalid {
     border-color: red;
+}
+
+.validation-message {
+    color: red;
+    font-size: 0.7em;
+    margin-bottom: 0.8rem;
+}
+
+.account-button-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    gap: 20px;
+}
+
+.account-button-container > p {
+    font-size: clamp(0.85rem, 1.5vw, 1em);
+}
+
+.account-button-container > p > a {
+    display: inline-block;   /* Ensures "Log in" text wraps together */
 }
 
 button[type="submit"] {
@@ -165,9 +183,9 @@ button[type="submit"] {
     cursor: pointer;
 }
 
-.error-message {
-    color: red;
-    font-size: 0.85em;
+button[type="submit"]:hover {
+    background-color: rgb(89, 115, 72);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.450);
 }
 
 #log-in {
@@ -175,37 +193,36 @@ button[type="submit"] {
     text-decoration: none;
 }
 
+#log-in:hover {
+    text-decoration: underline;
+}
+
+/* Styles for desktop displays */
 @media only screen and (min-width: 770px) {
     body {
         flex-direction: row;
     }
-    .header-image {
-        height: auto;
-        width: 50rem;
-        min-width: 25rem;
-        max-width: fit-content;
-    }
-    .header-image > img {
-        height: 100%;
-        min-width: 100%;
-    }
-    input {
-        width: min(240px, calc(150px + 5vw));
-    }
     .odin-container {
-        top: 20%;
-        font-size: 3rem;
-        height: 15%;
+        height: 10rem;
+    }
+    #odin-container-text {
+        font-size: 10rem;
     }
     header {
-        width: min(44rem, 50vw);
+        height: 100%;
+        flex: 0.5 0 20rem;
+    }
+    header > img {
+        height: 100%;
+    }
+    main {
+        flex: 2.5;  /* Ensures main content area is wider than odin-container */
+    }
+    main > * {
         flex: 1;
     }
-    header :first-child {
-        padding-top: 80px;
-    }
-    header,
-    #sign-up-form > h1 {
-        font-size: 1.4em;
+    main > section {
+        display: flex;
+        align-items: center;
     }
 }
