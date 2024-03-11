@@ -219,7 +219,7 @@ button[type="submit"]:hover {
         height: 100%;
     }
     main {
-        flex: 2.5;  /* Ensures main content area is wider than odin-container */
+        flex: 2.5;  /* Ensures main content area is wider than header */
         overflow: hidden;
     }
     main > * {
