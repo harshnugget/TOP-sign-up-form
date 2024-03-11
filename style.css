@@ -228,4 +228,30 @@ button[type="submit"]:hover {
         display: flex;
         align-items: center;
     }
+
+    /* Animations */
+    .slide-down-animation {
+        position: relative;
+        top: -100%;
+        animation: slideDown 0.5s ease forwards;
+
+    }
+    .slide-up-animation {
+        position: relative;
+        bottom: -100%;
+        animation: slideUp 0.5s ease forwards;
+    }
+
+    @keyframes slideUp {
+        to {
+            bottom: 0;
+        }
+    }
+
+    @keyframes slideDown {
+        to {
+            top: 0;
+        }
+    }
+
 }

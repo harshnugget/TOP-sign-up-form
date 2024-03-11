@@ -1,3 +1,6 @@
+// Prevent animations from repeating
+window.addEventListener('load', stopAnimations);
+
 const inputs = document.querySelectorAll('input[required]');
 const form = document.querySelector("#sign-up-form");
 
@@ -116,4 +119,29 @@ function showValidationMessage(input, show=true) {
         validationMessageElement.textContent = validationMessages[input.id] || "*Invalid!";
         input.classList.add("invalid");
     }
+}
+
+// Remove animation classes from elements
+function stopAnimations() {
+    const elementsSlideUp = document.querySelectorAll('.slide-up-animation');
+    const elementsSlideDown = document.querySelectorAll('.slide-down-animation');
+
+    elementsSlideUp.forEach(function (element) {
+        // Add an event listener for the 'animationend' event
+        element.addEventListener('animationend', function () {
+            // Remove the class only after the animation is finished
+            element.classList.remove('slide-up-animation');
+        }, { once: true });
+    });
+
+    elementsSlideDown.forEach(function (element) {
+        // Add an event listener for the 'animationend' event
+        element.addEventListener('animationend', function () {
+            // Remove the class only after the animation is finished
+            element.classList.remove('slide-down-animation');
+        }, { once: true });
+    });
+
+    // Remove the event listener
+    window.removeEventListener('load', stopAnimations);
 }

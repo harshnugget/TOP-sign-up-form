@@ -9,21 +9,21 @@
 <body>
     <header>
         <a class="odin-container" href="https://www.theodinproject.com">
-            <img id="odin-container-image" src="images/odin_logo.png" alt="odin logo">
+            <img id="odin-container-image" src="images/odin_logo.png" alt="odin logo" loading="lazy">
             <p id="odin-container-text">ODIN</p>
         </a>
         <img src="images/background_image.jpg" alt="green leaf plant in close up photography">
         <p id="photo-credit">Photo by <a href="https://unsplash.com/@haliewestphoto">Halle West</a> on <a href="https://unsplash.com">Unsplash</a></p>
     </header>
     <main>
-        <section>
+        <section class="slide-down-animation">
             <article>
                 <p><strong>This is not a real online service! You know you need something like this
                 in your life to help you realize your deepest dreams. <span>Sign up <em>now</em> to get started.<span></p><br>
                 <p>You <em>know</em> you want to.</strong></p>
             </article>
         </section>
-        <form id="sign-up-form" action="" method="post" novalidate>
+        <form id="sign-up-form" class="slide-up-animation" action="" method="post" novalidate>
             <h1><strong>Let's do this!</strong></h1> 
             <div class="form-row">
                 <div class="form-column">
@@ -62,7 +62,7 @@
                 </div>
             </div>
         </form>
-        <div class="account-button-container">
+        <div class="account-button-container slide-up-animation">
             <button form="sign-up-form" type="submit">Create Account</button>
             <p>Already have an account? <a href="" id="log-in"><strong>Log in</strong></a><span></p>
         </div>
