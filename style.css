@@ -220,6 +220,7 @@ button[type="submit"]:hover {
     }
     main {
         flex: 2.5;  /* Ensures main content area is wider than odin-container */
+        overflow: hidden;
     }
     main > * {
         flex: 1;
@@ -253,5 +254,4 @@ button[type="submit"]:hover {
             top: 0;
         }
     }
-
 }
